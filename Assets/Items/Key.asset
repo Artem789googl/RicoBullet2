@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2774dd204c03d944b9095093dc0373fe, type: 3}
+  m_Name: Key
+  m_EditorClassIdentifier: 
+  id: 4
+  ItemName: VINCENT'S KEY
+  Damage: 0
+  MaxCartridges: 0
+  HowToReplace: 0
+  fireRateItem: 0
+  x: 0
+  y: 0
+  Diraction: Key from Vincent's cabinet
+  BodyWGun: {fileID: 336396613326093952, guid: 76e471d013ba44e4fa4f1544197458c5, type: 3}
+  icon: {fileID: 21300000, guid: b9d2c369eb1e72c40aa1d254322917a1, type: 3}
+  WT: 0
+  weapt: 0
+  ValueCartridges: 0
+  Type: 1
