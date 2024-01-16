@@ -11,6 +11,8 @@ TagManager:
   - Object
   - Weapon_sa
   - Enemy
+  - HideObject
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - UI
   - BodyLayer
   - Far
-  - 
-  - 
+  - BulletL
+  - IgnorObjL
   - 
   - 
   - 

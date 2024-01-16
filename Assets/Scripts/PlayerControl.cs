@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
@@ -19,6 +20,7 @@ public class PlayerControl : MonoBehaviour
     private AudioSource music;
     public  AudioClip Stap_Wood;
 
+    public PlayableDirector directir;
 
     private GameObject Body;
     public GameObject Shoot_B;
@@ -37,37 +39,41 @@ public class PlayerControl : MonoBehaviour
         music = GameObject.Find("Music").GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(_joystick2.Horizontal != 0 & _joystick2.Vertical != 0)
-        {
-            Vector3 moveVector = -(Vector3.left * _joystick2.Horizontal - Vector3.up * _joystick2.Vertical);
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, moveVector);
-        }
-
-
-
-
-    }
-
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(_joystick.Horizontal * speed * Time.deltaTime, _joystick.Vertical * speed * Time.deltaTime);
-        if (_joystick.Horizontal != 0 & _joystick.Vertical != 0 && m == false)
+        
+        if (directir.state != PlayState.Playing)
         {
-            if (!music.isPlaying)
-            {
-                music.PlayOneShot(Stap_Wood);
-            }
-            Walk.SetBool("Stop", false);
+            rb.velocity = new Vector2(_joystick.Horizontal * speed * Time.deltaTime, _joystick.Vertical * speed * Time.deltaTime);
 
+            if (_joystick2.Horizontal != 0 & _joystick2.Vertical != 0)
+            {
+                Vector3 moveVector = -(Vector3.left * _joystick2.Horizontal - Vector3.up * _joystick2.Vertical);
+                transform.rotation = Quaternion.LookRotation(Vector3.forward, moveVector);
+            }
+            if (_joystick.Horizontal != 0 & _joystick.Vertical != 0 && m == false)
+            {
+                if (!music.isPlaying)
+                {
+                    music.PlayOneShot(Stap_Wood);
+                }
+                Walk.SetBool("Stop", false);
+
+            }
+            else
+            {
+                Walk.SetBool("Stop", true);
+                music.Stop();
+            }
         }
         else
         {
+            rb.velocity = new Vector2(0, 0);
             Walk.SetBool("Stop", true);
             music.Stop();
         }
+
+        
     }
 
     public void Change(GameObject bod)

@@ -9,12 +9,16 @@ public class Door_Trigger : MonoBehaviour
 
     public bool Close = false;
 
+    [Header("Dialogie")]
     public DialogueTrigger Dialogue;
-
     public string NeedKey;
+
+    
+
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player" | collision.tag == "Body")
+        if(collision.tag == "Player" || collision.tag == "Body" || collision.tag == "Enemy")
         {
             foreach (Item item in InventoryManager.Instance.Items2)
             {
@@ -38,7 +42,7 @@ public class Door_Trigger : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player" | collision.tag == "Body")
+        if (collision.tag == "Player" || collision.tag == "Body" || collision.tag == "Enemy")
         {
             door.Close();
         }

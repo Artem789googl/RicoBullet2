@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    private Dialogue dialogue1;
 
     public Text dialogueText;
     public Text nameText;
@@ -30,6 +32,7 @@ public class DialogueManager : MonoBehaviour
     {
         boxAnim.SetBool("StartOpen", true);
 
+        dialogue1 = dialogue;
         
         namePer.Clear();
         sentences.Clear();
@@ -54,7 +57,7 @@ public class DialogueManager : MonoBehaviour
     {
         if(sentences.Count == 0 && namePer.Count == 0 && spritePer.Count == 0)
         {
-            EndDialogue();
+            EndDialogue(dialogue1);
             return;
         }
         nameText.text = namePer.Dequeue();
@@ -78,9 +81,35 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EndDialogue()
+    public void EndDialogue(Dialogue dialogue)
     {
         For_Button.isClick = false;
         boxAnim.SetBool("StartOpen", false);
+        if (dialogue.director.state == PlayState.Playing)
+        {
+            if (dialogue.HaveCutScene)
+            {
+                dialogue.director.Stop();
+                
+            }
+            else if (dialogue.NextCutScene)
+            {
+                dialogue.director.Stop();
+                CutsceneManager.Instance.StartCutscene(dialogue.KeyCutscene);
+            }
+            if (dialogue.needMusic)
+            {
+                dialogue.SetFight.Stop();
+                dialogue.SetFight.PlayOneShot(dialogue.FightMusic);
+            }
+            foreach (GameObject obj in dialogue.objectsToKeepActive)
+            {
+                obj.SetActive(true);
+            }
+        }
+        if (dialogue.FightNeed)
+        {
+            FightManager.Instance.StartFight();
+        }
     }
 }

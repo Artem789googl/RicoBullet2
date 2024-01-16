@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 3344748451913631206}
   - component: {fileID: -6406891158384540430}
   - component: {fileID: 5392683528673669389}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Pula3
-  m_TagString: Pula
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
