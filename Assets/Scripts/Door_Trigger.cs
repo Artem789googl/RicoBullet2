@@ -18,7 +18,7 @@ public class Door_Trigger : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player" || collision.tag == "Body" || collision.tag == "Enemy")
+        if(collision.tag == "Player" || collision.tag == "Body" )
         {
             foreach (Item item in InventoryManager.Instance.Items2)
             {
@@ -36,6 +36,10 @@ public class Door_Trigger : MonoBehaviour
                 door.Open();
             }
             
+        }
+        if (collision.tag == "Enemy")
+        {
+            door.Open();
         }
     }
 

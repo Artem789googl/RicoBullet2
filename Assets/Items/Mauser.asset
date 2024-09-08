@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   ItemName: MAUSER
-  Damage: 5
+  Damage: 25
   MaxCartridges: 28
   HowToReplace: 7
   fireRateItem: 1

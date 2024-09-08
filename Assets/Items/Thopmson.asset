@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   ItemName: THOMPSON
-  Damage: 10
+  Damage: 5
   MaxCartridges: 200
   HowToReplace: 50
   fireRateItem: 0.1
-  x: 20
-  y: 200
+  x: 15
+  y: 100
   Diraction: 'A very populer weapon for mafia. '
   BodyWGun: {fileID: 6220742170688069837, guid: 372755bdb3cc3b04bb3995f077a3181a, type: 3}
   icon: {fileID: 21300000, guid: 94dbb5ee2baa16947ae4c158931501ae, type: 3}

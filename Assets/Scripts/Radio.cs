@@ -5,6 +5,7 @@ using UnityEngine;
 public class Radio : MonoBehaviour
 {
     private AudioSource Radio_Ob;
+    private AudioSource PhoneMusic;
     public AudioClip[] music;
 
     public bool trig;
@@ -14,6 +15,7 @@ public class Radio : MonoBehaviour
     void Start()
     {
         Radio_Ob = gameObject.GetComponent<AudioSource>();
+        PhoneMusic = GameObject.Find("PhoneMusic").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,11 +27,13 @@ public class Radio : MonoBehaviour
             if (Radio_Ob.isPlaying)
             {
                 Radio_Ob.Stop();
+                PhoneMusic.Play();
                 gameObject.GetComponent<SpriteRenderer>().sprite = RadioOff;
             }
             else
             {
                 Radio_Ob.PlayOneShot(music[Random.Range(0, music.Length)]);
+                PhoneMusic.Pause();
                 gameObject.GetComponent<SpriteRenderer>().sprite = RadioOn;
             }
             For_Button.isClick = false;

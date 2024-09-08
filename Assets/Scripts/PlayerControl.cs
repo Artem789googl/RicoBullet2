@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class PlayerControl : MonoBehaviour
 {
     public static PlayerControl Instance;
 
+    [Header("Controller")]
     [SerializeField] public float speed;
     [SerializeField] private FixedJoystick _joystick;
     [SerializeField] private FixedJoystick _joystick2;
@@ -15,18 +17,29 @@ public class PlayerControl : MonoBehaviour
 
     private bool m = false;
 
+    [Header("Animator")]
     public Animator Walk;
 
+    [Header("Music")]
     private AudioSource music;
     public  AudioClip Stap_Wood;
 
+    [Header("CutScene")]
     public PlayableDirector directir;
 
+    [Header("Buttons")]
     private GameObject Body;
     public GameObject Shoot_B;
+    [Header("Sprite")]
     public Sprite ShootSp;
     public Sprite KnifeSp;
     public GameObject CatridgeText;
+
+    [Header("Health")]
+    public Text HealthText;
+    public Volume VolumeHealth;
+    public Transform TargetToRespawn;
+    public int PlayerHealthInt = 100;
 
     private void Awake()
     {
@@ -73,7 +86,7 @@ public class PlayerControl : MonoBehaviour
             music.Stop();
         }
 
-        
+        HealthText.text = PlayerHealthInt.ToString();
     }
 
     public void Change(GameObject bod)
